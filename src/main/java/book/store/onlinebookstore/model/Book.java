@@ -15,7 +15,7 @@ public class Book {
     private Long id;
     private String title;
     private String author;
-    private String ISBN;
+    private String isbn;
     private BigDecimal price;
     private String description;
     private String coverImage;
