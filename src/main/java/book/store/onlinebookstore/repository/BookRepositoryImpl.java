@@ -1,21 +1,21 @@
 package book.store.onlinebookstore.repository;
 
 import book.store.onlinebookstore.model.Book;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import java.util.List;
+import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+@RequiredArgsConstructor
 @Repository
 public class BookRepositoryImpl implements BookRepository {
     private final SessionFactory sessionFactory;
-
-    @Autowired
-    public BookRepositoryImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private final EntityManagerFactory entityManagerFactory;
 
     @Override
     public Book save(Book book) {
@@ -40,11 +40,20 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
+    public Optional<Book> findById(Long id) {
+        try (EntityManager entityManager = entityManagerFactory.createEntityManager()) {
+            return Optional.ofNullable(entityManager.find(Book.class, id));
+        } catch (Exception e) {
+            throw new RuntimeException("Could not get book with id: " + id, e);
+        }
+    }
+
+    @Override
     public List<Book> findAll() {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("SELECT b FROM Book b", Book.class).getResultList();
         } catch (Exception e) {
-            throw new RuntimeException("Could not get all the book from the DB", e);
+            throw new RuntimeException("Could not get all the books from the DB", e);
         }
     }
 }
