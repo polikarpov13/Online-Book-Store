@@ -29,7 +29,7 @@ public class OnlineBookStoreApplication {
             book.setPrice(BigDecimal.valueOf(699));
             book.setCoverImage("100$ bill");
             bookService.save(book);
-            System.out.println(bookService.findAll());
+            System.out.println("Project started successfully");
         };
     }
 }
