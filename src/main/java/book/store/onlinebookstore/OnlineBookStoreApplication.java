@@ -1,7 +1,7 @@
 package book.store.onlinebookstore;
 
-import book.store.onlinebookstore.dto.CreateBookRequestDto;
-import book.store.onlinebookstore.service.BookService;
+import book.store.onlinebookstore.dto.book.CreateBookRequestDto;
+import book.store.onlinebookstore.service.book.BookService;
 import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
