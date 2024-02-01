@@ -6,38 +6,34 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.math.BigDecimal;
 import lombok.Data;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-@Entity
 @Data
-@SQLDelete(sql = "UPDATE books SET is_deleted = TRUE WHERE id = ?")
+@Entity
+@SQLDelete(sql = "UPDATE users SET is_deleted = TRUE WHERE id = ?")
 @Where(clause = "is_deleted = FALSE")
-@Table(name = "books")
-public class Book {
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "email", unique = true, nullable = false)
+    private String email;
 
-    @Column(name = "author")
-    private String author;
+    @Column(name = "password", nullable = false)
+    private String password;
 
-    @Column(name = "isbn")
-    private String isbn;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
 
-    @Column(name = "price")
-    private BigDecimal price;
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "image")
-    private String coverImage;
+    @Column(name = "shipping_address", nullable = false)
+    private String shippingAddress;
 
     @Column(nullable = false)
     private boolean isDeleted;
