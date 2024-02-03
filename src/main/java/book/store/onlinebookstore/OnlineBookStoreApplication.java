@@ -3,16 +3,16 @@ package book.store.onlinebookstore;
 import book.store.onlinebookstore.dto.book.CreateBookRequestDto;
 import book.store.onlinebookstore.service.book.BookService;
 import java.math.BigDecimal;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@RequiredArgsConstructor
 public class OnlineBookStoreApplication {
-    @Autowired
-    private BookService bookService;
+    private final BookService bookService;
 
     public static void main(String[] args) {
         SpringApplication.run(OnlineBookStoreApplication.class, args);

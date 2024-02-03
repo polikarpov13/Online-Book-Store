@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-users
+      author: polikarpov13
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: email, value: "carl@example.com" }
+              - column: { name: password, value: "$2a$10$/mRwUcuZe1K0/OpmHfDOx.sHimAwS1J2vpRgNydAsz/gfL3.PUl/S" } #securePassword123
+              - column: { name: first_name, value: "Carl" }
+              - column: { name: last_name, value: "Carlson" }
+              - column: { name: shipping_address, value: "13 St, London, UK" }
+        - insert:
+            tableName: users
+            columns:
+              - column: {name: email, value: "alice@example.com"}
+              - column: {name: password, value: "$2a$10$UWDzRXIj71KBT/dDlQgUROj4kquots6m3v3jDLvCXXexpez3d.jdu"} #1234
+              - column: {name: first_name, value: "Alice"}
+              - column: {name: last_name, value: "Alison"}
+              - column: {name: shipping_address, value: "13 St, Rome, Italy"}
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: email, value: "bob@example.com" }
+              - column: { name: password, value: "$2a$10$UWDzRXIj71KBT/dDlQgUROj4kquots6m3v3jDLvCXXexpez3d.jdu" } #1234
+              - column: { name: first_name, value: "Bob" }
+              - column: { name: last_name, value: "Alison" }
+              - column: { name: shipping_address, value: "13 St, New York, USA" }
