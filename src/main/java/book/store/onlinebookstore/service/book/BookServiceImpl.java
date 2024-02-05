@@ -1,6 +1,7 @@
 package book.store.onlinebookstore.service.book;
 
 import book.store.onlinebookstore.dto.book.BookDto;
+import book.store.onlinebookstore.dto.book.BookDtoWithoutCategoryIds;
 import book.store.onlinebookstore.dto.book.BookSearchParameters;
 import book.store.onlinebookstore.dto.book.CreateBookRequestDto;
 import book.store.onlinebookstore.dto.book.UpdateBookRequestDto;
@@ -9,6 +10,7 @@ import book.store.onlinebookstore.mapper.BookMapper;
 import book.store.onlinebookstore.model.Book;
 import book.store.onlinebookstore.repository.book.BookRepository;
 import book.store.onlinebookstore.repository.book.BookSpecificationBuilder;
+import book.store.onlinebookstore.repository.category.CategoryRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +21,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
+    private final CategoryRepository categoryRepository;
     private final BookMapper bookMapper;
     private final BookSpecificationBuilder bookSpecificationBuilder;
 
@@ -31,6 +34,16 @@ public class BookServiceImpl implements BookService {
     public List<BookDto> findAll(Pageable pageable) {
         return bookRepository.findAll(pageable).stream()
                 .map(bookMapper::toDto)
+                .toList();
+    }
+
+    @Override
+    public List<BookDtoWithoutCategoryIds> findAllByCategoryId(Long id) {
+        if (!categoryRepository.existsById(id)) {
+            throw new EntityNotFoundException("Category with id: " + id + " does not exist!");
+        }
+        return bookRepository.findAllByCategoryId(id).stream()
+                .map(bookMapper::toDtoWithoutCategories)
                 .toList();
     }
 

@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-book
+      author: polikarpov13
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column: { name: title, value: "Book1"}
+              - column: {name: author, value: "Author1"}
+              - column: {name: isbn, value: "131-1-131-13131-1"}
+              - column: {name: price, value: 888.80}
+              - column: {name: description, value: "Description1"}
+              - column: {name: image, value: "Image1"}
+        - insert:
+            tableName: books
+            columns:
+              - column: { name: title, value: "Book2" }
+              - column: { name: author, value: "Author2" }
+              - column: { name: isbn, value: "131-1-131-13131-2" }
+              - column: { name: price, value: 888.80 }
+              - column: { name: description, value: "Description2" }
+              - column: { name: image, value: "Image2" }

@@ -1,31 +1,32 @@
 package book.store.onlinebookstore.dto.book;
 
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import java.math.BigDecimal;
-import java.util.Set;
 import lombok.Data;
+import org.hibernate.validator.constraints.ISBN;
 
 @Data
-public class CreateBookRequestDto {
-    @NotNull
+public class BookDtoWithoutCategoryIds {
+    private Long id;
+
+    @NotBlank
     private String title;
 
-    @NotNull
+    @NotBlank
     private String author;
 
-    @NotNull
+    @NotBlank
+    @ISBN(type = ISBN.Type.ANY)
     private String isbn;
 
-    @NotNull
+    @NotBlank
     @Min(0)
     private BigDecimal price;
 
-    @NotNull
+    @NotBlank
     private String description;
 
-    @NotNull
+    @NotBlank
     private String coverImage;
-
-    private Set<Long> categoryIds;
 }
