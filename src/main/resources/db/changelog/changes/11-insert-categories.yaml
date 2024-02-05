@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-categories
+      author: polikarpov13
+      changes:
+        - insert:
+            tableName: categories
+            columns:
+              - column: {name: name, value: "Science Fiction"}
+              - column: {name: description, value: "Science based stories"}
+        - insert:
+            tableName: categories
+            columns:
+              - column: {name: name, value: "Fantasy"}
+              - column: {name: description, value: "Fantasy based stories"}
+        - insert:
+            tableName: categories
+            columns:
+              - column: {name: name, value: "Detective"}
+              - column: {name: description, value: "Detective based stories"}
+        - insert:
+            tableName: categories
+            columns:
+              - column: {name: name, value: "Novel"}
+              - column: {name: description, value: "Long story books"}
