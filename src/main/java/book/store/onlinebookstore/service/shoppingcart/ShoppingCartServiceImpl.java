@@ -32,9 +32,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         CartItem cartItem = cartItemMapper.toModel(cartItemDto);
         ShoppingCart shoppingCart = shoppingCartMapper.toModel(getShoppingCart());
         cartItem.setShoppingCart(shoppingCart);
-        Book book = bookRepository.findById(cartItemDto.getItemId()).orElseThrow(()
+        Book book = bookRepository.findById(cartItemDto.getBookId()).orElseThrow(()
                 -> new EntityNotFoundException("Could not add book with ID: "
-                + cartItemDto.getItemId()));
+                + cartItemDto.getBookId()));
         cartItem.setBook(book);
         cartItemRepository.save(cartItem);
         return shoppingCartMapper.toDto(shoppingCart);

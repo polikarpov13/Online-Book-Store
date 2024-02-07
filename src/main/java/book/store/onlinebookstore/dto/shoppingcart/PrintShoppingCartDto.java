@@ -1,6 +1,6 @@
 package book.store.onlinebookstore.dto.shoppingcart;
 
-import book.store.onlinebookstore.model.CartItem;
+import book.store.onlinebookstore.dto.cartitem.CartItemDto;
 import jakarta.validation.constraints.NotNull;
 import java.util.Set;
 import lombok.Data;
@@ -13,5 +13,5 @@ public class PrintShoppingCartDto {
     private Long userId;
 
     @NotNull
-    private Set<CartItem> cartItems;
+    private Set<CartItemDto> cartItemDtos;
 }

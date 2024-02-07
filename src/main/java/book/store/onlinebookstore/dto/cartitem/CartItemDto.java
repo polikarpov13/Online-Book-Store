@@ -6,7 +6,12 @@ import lombok.Data;
 
 @Data
 public class CartItemDto {
-    private Long itemId;
+    private Long id;
+
+    private Long bookId;
+
+    @NotNull
+    private String bookTitle;
 
     @NotNull
     @Min(1)
