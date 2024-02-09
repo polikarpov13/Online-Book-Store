@@ -30,6 +30,7 @@ public interface ShoppingCartMapper {
     @Mapping(target = "cartItems", source = "cartItemDtos")
     ShoppingCart toModel(PrintShoppingCartDto printShoppingCartDto);
 
+    //all these methods below are being used in ShoppingCartMapperImpl class
     @AfterMapping
     default void setCartAndUserIds(
             @MappingTarget ShoppingCartDto shoppingCartDto,

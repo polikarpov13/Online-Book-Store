@@ -7,10 +7,8 @@ import lombok.Data;
 @Data
 public class ShoppingCartDto {
     private Long id;
-
     @NotNull
     private Long userId;
-
     @NotNull
     private Set<Long> cartItemIds;
 }

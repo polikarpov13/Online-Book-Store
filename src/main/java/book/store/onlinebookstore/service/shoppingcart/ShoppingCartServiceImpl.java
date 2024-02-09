@@ -30,7 +30,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Override
     public ShoppingCartDto addItemToCart(CartItemDto cartItemDto) {
         CartItem cartItem = cartItemMapper.toModel(cartItemDto);
-        ShoppingCart shoppingCart = shoppingCartMapper.toModel(getShoppingCart());
+        ShoppingCart shoppingCart = getSoppingCartModel();
         cartItem.setShoppingCart(shoppingCart);
         Book book = bookRepository.findById(cartItemDto.getBookId()).orElseThrow(()
                 -> new EntityNotFoundException("Could not add book with ID: "
@@ -59,5 +59,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Override
     public void deleteItemById(Long itemId) {
         cartItemRepository.deleteById(itemId);
+    }
+
+    private ShoppingCart getSoppingCartModel() {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return shoppingCartRepository.getShoppingCartByUserId(user.getId());
     }
 }
