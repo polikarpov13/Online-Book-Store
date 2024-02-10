@@ -1,20 +1,21 @@
 package book.store.onlinebookstore.mapper;
 
 import book.store.onlinebookstore.config.MapperConfig;
-import book.store.onlinebookstore.dto.cartitem.CartItemDto;
 import book.store.onlinebookstore.dto.shoppingcart.PrintShoppingCartDto;
 import book.store.onlinebookstore.dto.shoppingcart.ShoppingCartDto;
 import book.store.onlinebookstore.model.CartItem;
 import book.store.onlinebookstore.model.ShoppingCart;
-import book.store.onlinebookstore.model.User;
-import java.util.Set;
 import java.util.stream.Collectors;
 import org.mapstruct.AfterMapping;
+import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
-@Mapper(config = MapperConfig.class, componentModel = "spring")
+@Mapper(config = MapperConfig.class,
+        uses = {CartItemMapper.class, UserMapper.class},
+        injectionStrategy = InjectionStrategy.CONSTRUCTOR,
+        componentModel = "spring")
 public interface ShoppingCartMapper {
     ShoppingCartDto toDto(ShoppingCart shoppingCart);
 
@@ -30,7 +31,6 @@ public interface ShoppingCartMapper {
     @Mapping(target = "cartItems", source = "cartItemDtos")
     ShoppingCart toModel(PrintShoppingCartDto printShoppingCartDto);
 
-    //all these methods below are being used in ShoppingCartMapperImpl class
     @AfterMapping
     default void setCartAndUserIds(
             @MappingTarget ShoppingCartDto shoppingCartDto,
@@ -39,42 +39,5 @@ public interface ShoppingCartMapper {
                 .map(CartItem::getId)
                 .collect(Collectors.toSet()));
         shoppingCartDto.setUserId(shoppingCart.getUser().getId());
-    }
-
-    default Set<CartItem> map(Set<Long> ids) {
-        return ids.stream().map(id -> {
-            CartItem cartItem = new CartItem();
-            cartItem.setId(id);
-            return cartItem;
-        }).collect(Collectors.toSet());
-    }
-
-    default User map(Long id) {
-        User user = new User();
-        user.setId(id);
-        return user;
-    }
-
-    default Long map(User user) {
-        return user.getId();
-    }
-
-    default Set<CartItemDto> mapDto(Set<CartItem> items) {
-        return items.stream().map(i -> {
-            CartItemDto dto = new CartItemDto();
-            dto.setId(i.getId());
-            dto.setBookId(i.getBook().getId());
-            dto.setBookTitle(i.getBook().getTitle());
-            dto.setQuantity(i.getQuantity());
-            return dto;
-        }).collect(Collectors.toSet());
-    }
-
-    default Set<CartItem> mapModel(Set<CartItemDto> items) {
-        return items.stream().map(i -> {
-            CartItem item = new CartItem();
-            item.setId(i.getId());
-            return item;
-        }).collect(Collectors.toSet());
     }
 }
