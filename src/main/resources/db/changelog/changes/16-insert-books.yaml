@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-books
+      author: polikarpov13
+      changes:
+        - insert:
+            tableName: books
+            columns:
+              - column: { name: title, value: "BookSample1"}
+              - column: {name: author, value: "AuthorSample1"}
+              - column: {name: isbn, value: "978-3-16-148410-0"}
+              - column: {name: price, value: 99.99}
+              - column: {name: description, value: "DescriptionSample1"}
+              - column: {name: image, value: "ImageSample1"}
+        - insert:
+            tableName: books
+            columns:
+              - column: { name: title, value: "BookSample2" }
+              - column: { name: author, value: "AuthorSample2" }
+              - column: { name: isbn, value: "978-1-56619-909-4" }
+              - column: { name: price, value: 55.99 }
+              - column: { name: description, value: "DescriptionSample2" }
+              - column: { name: image, value: "ImageSample2" }
+        - insert:
+            tableName: books
+            columns:
+              - column: { name: title, value: "BookSample3" }
+              - column: { name: author, value: "AuthorSample3" }
+              - column: { name: isbn, value: "978-92-95055-02-5" }
+              - column: { name: price, value: 28.00 }
+              - column: { name: description, value: "DescriptionSample3" }
+              - column: { name: image, value: "ImageSample3" }
+        - insert:
+            tableName: books
+            columns:
+              - column: { name: title, value: "BookSample4" }
+              - column: { name: author, value: "AuthorSample4" }
+              - column: { name: isbn, value: "978-1-4028-9462-6" }
+              - column: { name: price, value: 28.00 }
+              - column: { name: description, value: "DescriptionSample4" }
+              - column: { name: image, value: "ImageSample14" }
