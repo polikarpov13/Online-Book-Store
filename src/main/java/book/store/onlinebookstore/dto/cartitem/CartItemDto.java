@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 public class CartItemDto {
     private Long id;
-    @NotNull
     private Long bookId;
+    @NotNull
     private String bookTitle;
     @NotNull
     private int quantity;
