@@ -1,7 +1,7 @@
 package book.store.onlinebookstore.dto.order;
 
 import book.store.onlinebookstore.dto.orderitem.OrderItemDto;
-import book.store.onlinebookstore.enums.Status;
+import book.store.onlinebookstore.model.Order;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -22,5 +22,5 @@ public class OrderDto {
     @Min(0)
     private BigDecimal total;
     @NotNull
-    private Status status;
+    private Order.Status status;
 }

@@ -1,6 +1,5 @@
 package book.store.onlinebookstore.model;
 
-import book.store.onlinebookstore.enums.Status;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,4 +40,16 @@ public class Order {
     private Set<OrderItem> orderItems;
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted;
+
+    public enum Status {
+        COMPLETED("completed"),
+        PENDING("pending"),
+        DELIVERED("delivered");
+
+        private String status;
+
+        Status(String status) {
+            this.status = status;
+        }
+    }
 }
