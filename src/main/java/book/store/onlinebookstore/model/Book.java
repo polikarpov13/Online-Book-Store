@@ -51,6 +51,6 @@ public class Book {
     )
     private Set<Category> categories;
 
-    @Column(nullable = false)
+    @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted;
 }
