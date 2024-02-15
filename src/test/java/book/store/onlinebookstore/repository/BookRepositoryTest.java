@@ -3,7 +3,6 @@ package book.store.onlinebookstore.repository;
 import book.store.onlinebookstore.model.Book;
 import book.store.onlinebookstore.repository.book.BookRepository;
 import book.store.onlinebookstore.repository.category.CategoryRepository;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
