@@ -42,7 +42,7 @@ public class BookController {
         return bookService.findById(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{id}")
     @Operation(summary = "Update book entity by ID", description = "Update book by ID")
     public BookDto updateById(@PathVariable Long id,

@@ -99,7 +99,7 @@ public class BookControllerTest {
         Assertions.assertEquals("Title", actual.getTitle());
     }
 
-    @WithMockUser(username = "user", roles = {"ADMIN"})
+    @WithMockUser(username = "user", authorities = {"ADMIN"})
     @Test
     @DisplayName("Update Book entity by VALID ID")
     @Sql(scripts = "classpath:database/book/insert-controller-book.sql",
