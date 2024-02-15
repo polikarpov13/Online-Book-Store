@@ -1,1 +1,1 @@
-DELETE FROM categories WHERE id = 999;
+DELETE FROM categories WHERE name = 'Category';
