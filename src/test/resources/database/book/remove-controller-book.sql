@@ -1,1 +1,1 @@
-DELETE from books WHERE id = 13;
+DELETE from books WHERE id = 999;
