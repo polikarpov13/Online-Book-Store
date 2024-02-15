@@ -53,7 +53,7 @@ public class CategoryController {
         return bookService.findAllByCategoryId(id);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     @Operation(summary = "Save category entity to the DB", description = "Create a new category")
     public CategoryDto save(
@@ -61,7 +61,7 @@ public class CategoryController {
         return categoryService.save(createCategoryRequestDto);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     @Operation(summary = "Update category entity by ID", description = "Update category by ID")
     public CategoryDto updateById(
@@ -70,7 +70,7 @@ public class CategoryController {
         return categoryService.updateById(id, updateCategoryRequestDto);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "Soft delete category entity from the DB",

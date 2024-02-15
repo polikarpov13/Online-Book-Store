@@ -64,7 +64,7 @@ public class BookController {
         return bookService.save(book);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete a book entity by ID from the DB", description = "Delete a book")

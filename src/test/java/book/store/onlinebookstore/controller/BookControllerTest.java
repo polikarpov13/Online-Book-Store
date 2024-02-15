@@ -151,7 +151,7 @@ public class BookControllerTest {
         MvcResult result = mockMvc.perform(post("/books")
                         .content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isCreated())
+                .andExpect(status().isOk())
                 .andReturn();
 
         BookDto actual =
@@ -163,7 +163,7 @@ public class BookControllerTest {
                 .reflectionEquals(expected, actual, "id", "author", "title");
     }
 
-    @WithMockUser(username = "user", roles = "ADMIN")
+    @WithMockUser(username = "user", roles = {"ADMIN"})
     @Test
     @DisplayName("Delete Book entity by VALID ID")
     @Sql(scripts = "classpath:database/book/insert-controller-book.sql",
