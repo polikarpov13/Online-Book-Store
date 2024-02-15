@@ -27,11 +27,11 @@ public class BookRepositoryTest {
     private CategoryRepository categoryRepository;
 
     @BeforeAll
-    public void setup(@Autowired DataSource dataSource) {
+    static void setup(@Autowired DataSource dataSource) {
         try (Connection connection = dataSource.getConnection()) {
             connection.setAutoCommit(true);
             ScriptUtils.executeSqlScript(connection,
-                    new ClassPathResource("database/remove-all-books-and-categories.sql"));
+                    new ClassPathResource("database/book/remove-all-books-and-categories.sql"));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
