@@ -24,11 +24,6 @@ public class BookRepositoryTest {
         "classpath:database/book/insert-category.sql",
         "classpath:database/book/insert-books-categories.sql"
     }, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    @Sql(scripts = {
-        "classpath:database/book/remove-book.sql",
-        "classpath:database/book/remove-books-categories.sql",
-        "classpath:database/book/remove-category.sql"
-    }, executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     public void findAllBooksByCategoryId_ValidId_ReturnsValidBooks() {
         List<Book> actual = bookRepository.findAllByCategoryId(1L);
 
