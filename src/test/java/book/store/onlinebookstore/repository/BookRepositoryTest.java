@@ -26,7 +26,7 @@ public class BookRepositoryTest {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @BeforeAll
+/*    @BeforeAll
     static void setup(@Autowired DataSource dataSource) {
         try (Connection connection = dataSource.getConnection()) {
             connection.setAutoCommit(true);
@@ -35,7 +35,7 @@ public class BookRepositoryTest {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
     @Test
     @DisplayName("Get all Books by VALID Category ID")
