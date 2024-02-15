@@ -142,8 +142,8 @@ public class CategoryControllerTest {
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     public void saveCategoryByValidCreateCategoryRequestDto_Successful() throws Exception {
         CreateCategoryRequestDto dto = new CreateCategoryRequestDto();
-        dto.setName("Category");
-        dto.setDescription("Description");
+        dto.setName("Category1");
+        dto.setDescription("Description1");
 
         CategoryDto expected = formCategoryDto();
 
