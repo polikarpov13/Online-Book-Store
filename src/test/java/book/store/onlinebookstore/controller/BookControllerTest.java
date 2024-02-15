@@ -88,7 +88,7 @@ public class BookControllerTest {
     @Sql(scripts = "classpath:database/book/remove-controller-book.sql",
             executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     public void findBookById_ValidId_Successful() throws Exception {
-        MvcResult result = mockMvc.perform(get("/books/13"))
+        MvcResult result = mockMvc.perform(get("/books/1"))
                 .andExpect(status().isOk())
                 .andReturn();
 
