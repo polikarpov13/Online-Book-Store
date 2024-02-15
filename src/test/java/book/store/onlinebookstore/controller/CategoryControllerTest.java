@@ -129,6 +129,9 @@ public class CategoryControllerTest {
                 objectMapper.readValue(result.getResponse().getContentAsString(), BookDto[].class);
         Assertions.assertNotNull(actual);
 
+        List<BookDtoWithoutCategoryIds> expectedList = List.of(expected);
+        List<BookDto> actualList = List.of(actual);
+
         EqualsBuilder.reflectionEquals(List.of(expected), List.of(actual), "id");
     }
 
