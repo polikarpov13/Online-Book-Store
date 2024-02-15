@@ -151,7 +151,7 @@ public class BookControllerTest {
         MvcResult result = mockMvc.perform(post("/books")
                         .content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andReturn();
 
         BookDto actual =
@@ -170,7 +170,7 @@ public class BookControllerTest {
             executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     public void deleteBookById_ValidId_Successful() throws Exception {
         mockMvc.perform(delete("/books/1"))
-                .andExpect(status().isOk())
+                .andExpect(status().isNoContent())
                 .andReturn();
     }
 

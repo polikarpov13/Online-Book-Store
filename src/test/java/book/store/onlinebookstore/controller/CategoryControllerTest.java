@@ -200,7 +200,7 @@ public class CategoryControllerTest {
             executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     public void deleteCategoryById_ValidId_Successful() throws Exception {
         mockMvc.perform(delete("/categories/1"))
-                .andExpect(status().isOk())
+                .andExpect(status().isNoContent())
                 .andReturn();
     }
 
