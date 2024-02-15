@@ -3,13 +3,20 @@ package book.store.onlinebookstore.repository;
 import book.store.onlinebookstore.model.Book;
 import book.store.onlinebookstore.repository.book.BookRepository;
 import book.store.onlinebookstore.repository.category.CategoryRepository;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
+import javax.sql.DataSource;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.test.context.jdbc.Sql;
 
 @DataJpaTest
@@ -19,6 +26,17 @@ public class BookRepositoryTest {
     private BookRepository bookRepository;
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @BeforeAll
+    public void setup(@Autowired DataSource dataSource) {
+        try (Connection connection = dataSource.getConnection()) {
+            connection.setAutoCommit(true);
+            ScriptUtils.executeSqlScript(connection,
+                    new ClassPathResource("database/remove-all-books-and-categories.sql"));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Test
     @DisplayName("Get all Books by VALID Category ID")
