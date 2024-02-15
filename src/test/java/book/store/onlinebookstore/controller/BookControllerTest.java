@@ -121,7 +121,7 @@ public class BookControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        MvcResult result = mockMvc.perform(get("/books/13"))
+        MvcResult result = mockMvc.perform(get("/books/1"))
                 .andExpect(status().isOk())
                 .andReturn();
 
@@ -163,12 +163,13 @@ public class BookControllerTest {
                 .reflectionEquals(expected, actual, "id", "author", "title");
     }
 
+    @WithMockUser(username = "user", roles = "ADMIN")
     @Test
     @DisplayName("Delete Book entity by VALID ID")
     @Sql(scripts = "classpath:database/book/insert-controller-book.sql",
             executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     public void deleteBookById_ValidId_Successful() throws Exception {
-        mockMvc.perform(delete("/books/13"))
+        mockMvc.perform(delete("/books/1"))
                 .andExpect(status().isOk())
                 .andReturn();
     }
