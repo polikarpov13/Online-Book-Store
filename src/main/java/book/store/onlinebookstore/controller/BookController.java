@@ -42,7 +42,7 @@ public class BookController {
         return bookService.findById(id);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     @Operation(summary = "Update book entity by ID", description = "Update book by ID")
     public BookDto updateById(@PathVariable Long id,
@@ -57,7 +57,7 @@ public class BookController {
         return bookService.search(params);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     @Operation(summary = "Creating a new book entity", description = "Save a new book")
     public BookDto save(@RequestBody @Valid CreateBookRequestDto book) {
