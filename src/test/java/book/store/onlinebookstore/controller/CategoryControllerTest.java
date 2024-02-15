@@ -132,7 +132,7 @@ public class CategoryControllerTest {
         List<BookDtoWithoutCategoryIds> expectedList = List.of(expected);
         List<BookDto> actualList = List.of(actual);
 
-        EqualsBuilder.reflectionEquals(expectedList, actualList, "id");
+        Assertions.assertEquals(expectedList, actualList);
     }
 
     @WithMockUser(username = "user", roles = {"ADMIN"})
