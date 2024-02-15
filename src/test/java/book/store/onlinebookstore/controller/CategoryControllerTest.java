@@ -162,7 +162,7 @@ public class CategoryControllerTest {
         EqualsBuilder.reflectionEquals(expected, actual, "id");
     }
 
-    @WithMockUser(username = "user", roles = {"ADMIN"})
+    @WithMockUser(username = "admin", roles = {"ADMIN"})
     @Test
     @DisplayName("Update Category entity by VALID ID")
     @Sql(scripts = "classpath:database/book/insert-category.sql",
