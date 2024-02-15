@@ -47,7 +47,7 @@ public class CategoryControllerTest {
         try (Connection connection = dataSource.getConnection()) {
             connection.setAutoCommit(true);
             ScriptUtils.executeSqlScript(connection,
-                    new ClassPathResource("database/remove-all-books-and-categories.sql"));
+                    new ClassPathResource("database/book/remove-all-books-and-categories.sql"));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
