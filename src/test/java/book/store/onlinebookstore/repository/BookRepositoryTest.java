@@ -2,7 +2,6 @@ package book.store.onlinebookstore.repository;
 
 import book.store.onlinebookstore.model.Book;
 import book.store.onlinebookstore.repository.book.BookRepository;
-import book.store.onlinebookstore.repository.category.CategoryRepository;
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
