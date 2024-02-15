@@ -122,6 +122,8 @@ public class CategoryControllerTest {
     @WithMockUser(username = "user", roles = {"ADMIN"})
     @Test
     @DisplayName("Create a Category entity and receive a VALID response")
+    @Sql(scripts = "classpath:database/book/remove-category.sql",
+            executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
     public void saveCategoryByValidCreateCategoryRequestDto_Successful() throws Exception {
         CreateCategoryRequestDto dto = new CreateCategoryRequestDto();
         dto.setName("Category");
