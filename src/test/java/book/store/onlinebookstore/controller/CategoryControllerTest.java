@@ -152,7 +152,7 @@ public class CategoryControllerTest {
         MvcResult result = mockMvc.perform(post("/categories")
                         .content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andReturn();
 
         CategoryDto actual = objectMapper.readValue(
