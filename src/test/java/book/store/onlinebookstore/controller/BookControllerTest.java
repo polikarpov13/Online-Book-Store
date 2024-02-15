@@ -115,7 +115,7 @@ public class BookControllerTest {
 
         String jsonRequest = objectMapper.writeValueAsString(requestDto);
 
-        mockMvc.perform(put("/books/13")
+        mockMvc.perform(put("/books/1")
                         .content(jsonRequest)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
