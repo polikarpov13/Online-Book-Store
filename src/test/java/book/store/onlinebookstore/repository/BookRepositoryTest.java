@@ -25,7 +25,7 @@ public class BookRepositoryTest {
         "classpath:database/book/insert-books-categories.sql"
     }, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     public void findAllBooksByCategoryId_ValidId_ReturnsValidBooks() {
-        List<Book> actual = bookRepository.findAllByCategoryId(1L);
+        List<Book> actual = bookRepository.findAllByCategoryId(28L);
 
         Assertions.assertEquals(1, actual.size());
     }

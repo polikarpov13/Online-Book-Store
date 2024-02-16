@@ -42,13 +42,6 @@ public class BookControllerTest {
     @BeforeAll
     static void setup(@Autowired WebApplicationContext webApplicationContext,
                       @Autowired DataSource dataSource) {
-        try (Connection connection = dataSource.getConnection()) {
-            connection.setAutoCommit(true);
-            ScriptUtils.executeSqlScript(connection,
-                    new ClassPathResource("database/book/remove-all-books-and-categories.sql"));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
         mockMvc = MockMvcBuilders
                 .webAppContextSetup(webApplicationContext)
                 .apply(springSecurity())
