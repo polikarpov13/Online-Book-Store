@@ -188,10 +188,8 @@ public class BookServiceTest {
 
         Mockito.when(bookMapper.toModel(dto)).thenReturn(book);
 
-        Long bookId = ID_VALUE;
-
         // When
-        bookService.updateById(bookId, dto);
+        bookService.updateById(ID_VALUE, dto);
         Mockito.verify(bookRepository, Mockito.times(1)).save(book);
     }
 

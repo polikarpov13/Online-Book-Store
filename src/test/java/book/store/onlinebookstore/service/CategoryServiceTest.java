@@ -131,10 +131,8 @@ public class CategoryServiceTest {
 
         Mockito.when(categoryMapper.toModel(dto)).thenReturn(category);
 
-        Long categoryId = ID_VALUE;
-
         // When
-        categoryService.updateById(categoryId, dto);
+        categoryService.updateById(ID_VALUE, dto);
         Mockito.verify(categoryRepository, Mockito.times(1)).save(category);
     }
 
