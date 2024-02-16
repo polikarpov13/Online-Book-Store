@@ -112,6 +112,8 @@ public class BookControllerTest {
         requestDto.setAuthor("Author2");
         requestDto.setPrice(BigDecimal.valueOf(26.00));
         requestDto.setIsbn("1234");
+        requestDto.setDescription("Description");
+        requestDto.setCoverImage("Image");
 
         String jsonRequest = objectMapper.writeValueAsString(requestDto);
 
