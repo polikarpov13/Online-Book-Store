@@ -2,6 +2,7 @@ databaseChangeLog:
   - changeSet:
       id: create-cart-item-table
       author: polikarpov13
+      context: dev
       changes:
         - createTable:
             tableName: cart_items
